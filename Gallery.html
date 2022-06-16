@@ -11,6 +11,15 @@
     <link rel="shortcut icon" href="https://www.amd.com/themes/custom/amd/favicon.ico" type="image/x-icon">
     <title>Gallery</title>
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f1f1f1;
+            font-family: Arial;
+        }
+
         /* Style the buttons */
         .btn {
             border: none;
@@ -26,30 +35,29 @@
     </style>
 </head>
 <body>
-<div class="main" id="app">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container">
-            <a class="navbar-brand" href="#">Game Shop</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link " aria-current="page" href="./index.html">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="./Gallery.html">Gallery</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="./SlideShow.html">SlideShow</a>
-                    </li>
-                </ul>
-            </div>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <a class="navbar-brand" href="#">Game Shop</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link " aria-current="page" href="./index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="./Gallery.html">Gallery</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="./SlideShow.html">SlideShow</a>
+                </li>
+            </ul>
         </div>
-    </nav>
+    </div>
+</nav>
+<div class="main" id="app">
     <hr>
-
     <div class="container">
         <div>
             <button class="btn active" v-on:click="filterSelection('all')"> Show all</button>
@@ -77,54 +85,57 @@
 </html>
 <script>
     const{ createApp ,ref,onMounted }  = Vue;
+
     const app = createApp({
         setup(){
-        const galleryList = ref([
-            {src:"./img/BattlefieldV.webp",title:"Battlefield V Definitive Edition",price:"104",type:"action"},
-            {src:"./img/BioShock.jpg",title:"BioShock: The Collection",price:"199.99",type:"action"},
-            {src:"./img/lamentum.png",title:"Lamentum",price:"80",type:"action"},
-            {src:"./img/warfare.jpg",title:"Armored Warfare",price:"free",type:"action"},
-            {src:"./img/DeathStranding.jpg",title:"DEATH STRANDING DIRECTOR'S CUT",price:"246",type:"action"},
+            const galleryList = ref([
+                {src:"./img/BattlefieldV.webp",title:"Battlefield V Definitive Edition",price:"104",type:"action"},
+                {src:"./img/BioShock.jpg",title:"BioShock: The Collection",price:"199.99",type:"action"},
+                {src:"./img/lamentum.png",title:"Lamentum",price:"80",type:"action"},
+                {src:"./img/warfare.jpg",title:"Armored Warfare",price:"free",type:"action"},
+                {src:"./img/DeathStranding.jpg",title:"DEATH STRANDING DIRECTOR'S CUT",price:"246",type:"action"},
 
-            {src:"./img/GhostwireTokyoTall.jpg",title:"Ghostwire",price:"296",type:"rpg"},
-            {src:"./img/MyTimeatSandrock.jpg",title:"My Time at Sandrock",price:"109",type:"rpg"},
-            {src:"./img/space-story.jpg",title:"Trigon: Space Story",price:"87",type:"rpg"},
-            {src:"./img/atom-rpg.jpg",title:"ATOM RPG",price:"99",type:"rpg"},
-            {src:"./img/ELEXII.jpg",title:"ELEX II",price:"240",type:"rpg"},
+                {src:"./img/GhostwireTokyoTall.jpg",title:"Ghostwire",price:"296",type:"rpg"},
+                {src:"./img/MyTimeatSandrock.jpg",title:"My Time at Sandrock",price:"109",type:"rpg"},
+                {src:"./img/space-story.jpg",title:"Trigon: Space Story",price:"87",type:"rpg"},
+                {src:"./img/atom-rpg.jpg",title:"ATOM RPG",price:"99",type:"rpg"},
+                {src:"./img/ELEXII.jpg",title:"ELEX II",price:"240",type:"rpg"},
 
-            {src:"./img/Steep.jpg",title:"Steep Standard Edition",price:"43",type:"sports"},
-            {src:"./img/WRC9FIAWorldRallyChampionship.webp",title:"WRC 9 FIA World Rally Championship",price:"51",type:"sports"},
-            {src:"./img/urban-trial-freestyle.jpg",title:"Urban Trial Freestyle,",price:"45",type:"sports"},
-            {src:"./img/NBA2K21.jpg",title:"NBA 2K21",price:"468",type:"sports"},
-            {src:"./img/VicariousVisions_Editions.jpg",title:"Tony Hawk's™ Pro Skater™",price:"155",type:"sports"},
+                {src:"./img/Steep.jpg",title:"Steep Standard Edition",price:"43",type:"sports"},
+                {src:"./img/WRC9FIAWorldRallyChampionship.webp",title:"WRC 9 FIA World Rally Championship",price:"51",type:"sports"},
+                {src:"./img/urban-trial-freestyle.jpg",title:"Urban Trial Freestyle,",price:"45",type:"sports"},
+                {src:"./img/NBA2K21.jpg",title:"NBA 2K21",price:"468",type:"sports"},
+                {src:"./img/VicariousVisions_Editions.jpg",title:"Tony Hawk's™ Pro Skater™",price:"155",type:"sports"},
 
-            {src:"./img/InsurgencySandstorm.webp",title:"Insurgency: Sandstorm",price:"99",type:"first-person"},
-            {src:"./img/DyingLight2StayHuman.webp",title:"Dying Light 2 Stay Human",price:"422",type:"first-person"},
-            {src:"./img/Battlefield2042.webp",title:"Battlefield™ 2042",price:"399",type:"first-person"},
-            {src:"./img/Back4Blood.jpg",title:"Back 4 Blood: Standard Edition",price:"194",type:"first-person"},
-            {src:"./img/killingfloor.jpg",title:"Killing Floor 2",price:"32.99",type:"first-person"},
+                {src:"./img/InsurgencySandstorm.webp",title:"Insurgency: Sandstorm",price:"99",type:"first-person"},
+                {src:"./img/DyingLight2StayHuman.webp",title:"Dying Light 2 Stay Human",price:"422",type:"first-person"},
+                {src:"./img/Battlefield2042.webp",title:"Battlefield™ 2042",price:"399",type:"first-person"},
+                {src:"./img/Back4Blood.jpg",title:"Back 4 Blood: Standard Edition",price:"194",type:"first-person"},
+                {src:"./img/killingfloor.jpg",title:"Killing Floor 2",price:"32.99",type:"first-person"}
+            ]);//end of galleryList
 
-        ]);
-        const data = ref([]);
+            const data = ref([]);// temporary data
 
-        const filterSelection = function (Key){
-            if (Key == "all") {
+            const filterSelection = function (Key){
+                if (Key == "all") {
+                    data.value = galleryList.value;
+                }
+                else {
+                    data.value = galleryList.value.filter(item => item.type == Key);
+                }
+            }
+
+            onMounted(()=>{
                 data.value = galleryList.value;
-            }
-            else {
-                data.value = galleryList.value.filter(item => item.type == Key);
-            }
-        }
+            })
 
-        onMounted(()=>{
-            data.value = galleryList.value;
-        })
-        return{
-            galleryList,
-            filterSelection,
-            data
-        }
-    }
+            return{
+                galleryList,
+                filterSelection,
+                data
+            }
+
+        }//end of setup
     })
     app.mount("#app");
 </script>
