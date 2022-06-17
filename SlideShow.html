@@ -6,8 +6,18 @@
     <link rel="stylesheet" href="./css/bootstrap.min.css">
     <script src="./js/bootstrap.min.js"></script>
     <script src="https://cdn.bootcdn.net/ajax/libs/vue/3.2.33/vue.global.prod.min.js"></script>
+    <!-- 会使用最新版本，你最好指定一个版本 -->
+    <script src="https://unpkg.com/naive-ui"></script>
     <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="./css/common.css">
+    <style>
+        .carousel-img {
+            margin: 0 auto;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -22,7 +32,7 @@
                     <a class="nav-link " aria-current="page" href="./index.html">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="./Gallery.html">Gallery</a>
+                    <a class="nav-link" href="./Gallery.html">Gallery</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link active" href="./SlideShow.html">SlideShow</a>
@@ -31,9 +41,41 @@
         </div>
     </div>
 </nav>
+<hr>
 <div class="main" id="app">
-    <hr>
     <div class="container">
+        <n-carousel
+                effect="card"
+                prev-slide-style="transform: translateX(-150%) translateZ(-800px);"
+                next-slide-style="transform: translateX(50%) translateZ(-800px);"
+                style="height: 338px"
+                :show-dots="true"
+        >
+            <n-carousel-item :style="{ width: '60%' }">
+                <n-image
+                        class="carousel-img"
+                        src="./img/screenshot/bf5.jpg"
+                />
+            </n-carousel-item>
+            <n-carousel-item :style="{ width: '60%' }">
+                <n-image
+                        class="carousel-img"
+                        src="./img/screenshot/fz5.jpg"
+                />
+            </n-carousel-item>
+            <n-carousel-item :style="{ width: '60%' }">
+                <n-image
+                        class="carousel-img"
+                        src="./img/screenshot/godofwar.jpg"
+                />
+            </n-carousel-item>
+            <n-carousel-item :style="{ width: '60%' }">
+                <n-image
+                        class="carousel-img"
+                        src="./img/screenshot/rdr2.jpg"
+                />
+            </n-carousel-item>
+        </n-carousel>
     </div>
 </div>
 </body>
@@ -46,5 +88,6 @@
             }
         }
     })
+    app.use(naive)
     app.mount("#app");
 </script>
