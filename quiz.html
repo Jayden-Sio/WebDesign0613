@@ -49,10 +49,6 @@
   </div>
 </nav>
 
-<n-message-provider>
-  <content />
-</n-message-provider>
-
 <div class="main" id="app">
   <hr>
   <div class="container">
@@ -78,36 +74,22 @@
     setup(){
       const question = ref([
         {
-          title: '你喜欢的网站是什么？',
-          options: ['百度', '谷歌', '必应', '搜狗'],
-          answer: '百度'
+          title: 'What is your favorite website?',
+          options: ['pornhub', 'youtube', 'fanbox', 'xvideo'],
+          answer: 'pornhub'
         },
         {
-          title: '你喜欢的网站是什么？',
-          options: ['百度', '谷歌', '必应', '搜狗'],
-          answer: '百度'
+          title: 'What is your favorite website?',
+          options: ['pornhub', 'youtube', 'fanbox', 'xvideo'],
+          answer: 'youtube'
         },
         {
-          title: '你喜欢的网站是什么？',
-          options: ['百度', '谷歌', '必应', '搜狗'],
-          answer: '百度'
-        },
-        {
-          title: '你喜欢的网站是什么？',
-          options: ['百度', '谷歌', '必应', '搜狗'],
-          answer: '百度'
-        },
-        {
-          title: '你喜欢的网站是什么？',
-          options: ['百度', '谷歌', '必应', '搜狗'],
-          answer: '百度'
-        },
-        {
-          title: '你喜欢的网站是什么？',
-          options: ['百度', '谷歌', '必应', '搜狗'],
-          answer: '百度'
+          title: 'What is your favorite website?',
+          options: ['pornhub', 'youtube', 'fanbox', 'xvideo'],
+          answer: 'pornhub'
         },
       ]);
+
       const checkAnswer =function (index,item) {
         if (item === question.value[index].answer) {
           alert('回答正确');
@@ -115,6 +97,7 @@
           alert('回答错误');
         }
       }
+
       return{
         question,
         checkAnswer
