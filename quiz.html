@@ -8,6 +8,7 @@
   <script src="https://cdn.bootcdn.net/ajax/libs/vue/3.2.33/vue.global.prod.min.js"></script>
   <!-- 会使用最新版本，你最好指定一个版本 -->
   <script src="https://unpkg.com/naive-ui"></script>
+
   <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="./css/common.css">
   <style>
@@ -37,23 +38,86 @@
         <li class="nav-item">
           <a class="nav-link" href="./SlideShow.html">SlideShow</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link  active" href="./quiz.html">quiz</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="./policy.html">policy</a>
+        </li>
       </ul>
     </div>
   </div>
 </nav>
+
+<n-message-provider>
+  <content />
+</n-message-provider>
+
 <div class="main" id="app">
   <hr>
   <div class="container">
-<!--    test-->
+    <n-space vertical>
+      <n-card :title="group.title" size="medium" v-for="(group,index) in question" :key="index">
+        <n-radio-group>
+          <n-space>
+            <n-radio v-for="(item,index2) in group.options" :key="index2" :value="item" @change="checkAnswer(index,item)">
+              {{item}}
+            </n-radio>
+          </n-space>
+        </n-radio-group>
+      </n-card>
+    </n-space>
   </div>
 </div>
 </body>
 </html>
 <script>
+
   const{ createApp ,ref }  = Vue;
   const app = createApp({
     setup(){
+      const question = ref([
+        {
+          title: '你喜欢的网站是什么？',
+          options: ['百度', '谷歌', '必应', '搜狗'],
+          answer: '百度'
+        },
+        {
+          title: '你喜欢的网站是什么？',
+          options: ['百度', '谷歌', '必应', '搜狗'],
+          answer: '百度'
+        },
+        {
+          title: '你喜欢的网站是什么？',
+          options: ['百度', '谷歌', '必应', '搜狗'],
+          answer: '百度'
+        },
+        {
+          title: '你喜欢的网站是什么？',
+          options: ['百度', '谷歌', '必应', '搜狗'],
+          answer: '百度'
+        },
+        {
+          title: '你喜欢的网站是什么？',
+          options: ['百度', '谷歌', '必应', '搜狗'],
+          answer: '百度'
+        },
+        {
+          title: '你喜欢的网站是什么？',
+          options: ['百度', '谷歌', '必应', '搜狗'],
+          answer: '百度'
+        },
+      ]);
+      const checkAnswer =function (index,item) {
+        if (item === question.value[index].answer) {
+          alert('回答正确');
+        } else {
+          alert('回答错误');
+        }
+      }
       return{
+        question,
+        checkAnswer
       }
     }
   })
