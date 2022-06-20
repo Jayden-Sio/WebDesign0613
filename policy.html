@@ -50,7 +50,55 @@
 <div class="main" id="app">
     <hr>
     <div class="container">
-
+        <n-space justify="center">
+            <h1>Policy</h1>
+        </n-space>
+        <hr>
+        <div>
+            <n-scrollbar style="max-height: 550px">
+                我们在田野上面找猪<br>
+                想象中已找到了三只<br>
+                小鸟在白云上面追逐<br>
+                它们在树底下跳舞<br>
+                啦啦啦啦啦啦啦啦咧<br>
+                啦啦啦啦咧<br>
+                我们在想象中度过了许多年<br>
+                想象中我们是如此的疯狂<br>
+                我们在城市里面找猪<br>
+                想象中已找到了几百万只<br>
+                小鸟在公园里面唱歌<br>
+                它们独自在想象里跳舞<br>
+                啦啦啦啦啦啦啦啦咧<br>
+                啦啦啦啦咧<br>
+                我们在想象中度过了许多年<br>
+                许多年之后我们又开始想象<br>
+                啦啦啦啦啦啦啦啦咧
+                我们在田野上面找猪<br>
+                想象中已找到了三只<br>
+                小鸟在白云上面追逐<br>
+                它们在树底下跳舞<br>
+                啦啦啦啦啦啦啦啦咧<br>
+                啦啦啦啦咧<br>
+                我们在想象中度过了许多年<br>
+                想象中我们是如此的疯狂<br>
+                我们在城市里面找猪<br>
+                想象中已找到了几百万只<br>
+                小鸟在公园里面唱歌<br>
+                它们独自在想象里跳舞<br>
+                啦啦啦啦啦啦啦啦咧<br>
+                啦啦啦啦咧<br>
+                我们在想象中度过了许多年<br>
+                许多年之后我们又开始想象<br>
+                啦啦啦啦啦啦啦啦咧
+            </n-scrollbar>
+        </div>
+        <hr>
+        <div>
+            <n-radio name="check" @change="change">
+                I had read and agree to the terms and conditions
+            </n-radio>
+            <n-button type="primary" @click="submit('Check')" :disabled="!value">Check</n-button>
+        </div>
     </div>
 </div>
 </body>
@@ -59,7 +107,18 @@
     const{ createApp ,ref }  = Vue;
     const app = createApp({
         setup(){
+            const submit = function (){
+                alert('submit');
+            }
+            const value = ref(false);
+
+            const change = function (){
+                value.value = !value.value;
+            }
             return{
+                value,
+                change,
+                submit
             }
         }
     })
