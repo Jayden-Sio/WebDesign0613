@@ -11,6 +11,8 @@
 
   <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="./css/common.css">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.2/font/bootstrap-icons.css">
   <style>
     .carousel-img {
       margin: 0 auto;
@@ -54,6 +56,9 @@
   <div class="container">
     <n-space vertical>
       <n-card :title="group.title" size="medium" v-for="(group,index) in question" :key="index">
+        <template #header-extra>
+          <n-image :src="res[index] ? 'img/quiz/right.png':'img/quiz/wrong.png'"  width="30">
+        </template>
         <n-radio-group>
           <n-space>
             <n-radio v-for="(item,index2) in group.options" :key="index2" :value="item" @change="checkAnswer(index,item)">
@@ -69,38 +74,77 @@
 </html>
 <script>
 
-  const{ createApp ,ref }  = Vue;
+  const{ createApp ,ref,onMounted}  = Vue;
   const app = createApp({
     setup(){
       const question = ref([
         {
-          title: 'What is your favorite website?',
-          options: ['pornhub', 'youtube', 'fanbox', 'xvideo'],
-          answer: 'pornhub'
+          title: 'What is type of game of BfV?',
+          options: ['first-person', 'RPG', 'Third-person'],
+          answer: 'first-person'
         },
         {
-          title: 'What is your favorite website?',
-          options: ['pornhub', 'youtube', 'fanbox', 'xvideo'],
-          answer: 'youtube'
+          title: 'What is type of game of CSGO?',
+          options: ['first-person', 'RPG', 'Third-person'],
+          answer: 'first-person'
         },
         {
-          title: 'What is your favorite website?',
-          options: ['pornhub', 'youtube', 'fanbox', 'xvideo'],
-          answer: 'pornhub'
+          title: 'What is type of game of Resident Evil ?',
+          options: ['action-adventure', 'RPG', 'sport'],
+          answer: 'action-adventure'
+        },
+        {
+          title: 'What is type of game of Dead or Alive ?',
+          options: ['RPG', '3D fighting games', 'sport'],
+          answer: '3D fighting games'
+        },
+        {
+          title: 'What is type of game of Star War JEDI Fallen order ?',
+          options: ['RPG', 'race', 'action'],
+          answer: 'action'
+        },
+        {
+          title: 'What is type of game of Star War JEDI Fallen order ?',
+          options: ['RPG', 'race', 'action'],
+          answer: 'action'
+        },
+        {
+          title: 'What is type of game of Star War JEDI Fallen order ?',
+          options: ['RPG', 'race', 'action'],
+          answer: 'action'
+        },
+        {
+          title: 'What is type of game of Star War JEDI Fallen order ?',
+          options: ['RPG', 'race', 'action'],
+          answer: 'action'
+        },
+        {
+          title: 'What is type of game of Star War JEDI Fallen order ?',
+          options: ['RPG', 'race', 'action'],
+          answer: 'action'
         },
       ]);
 
+      const res = ref([])
+
       const checkAnswer =function (index,item) {
         if (item === question.value[index].answer) {
-          alert('回答正确');
+          res.value[index]=true;
         } else {
-          alert('回答错误');
+          res.value[index]=false;
         }
       }
+      onMounted(()=>{
+        for (let i = 0; i<question.value.length; i++){
+          res.value.push(false);
+        }
+      //  初始化列表
+      })
 
       return{
         question,
-        checkAnswer
+        checkAnswer,
+        res
       }
     }
   })
